@@ -1,160 +1,120 @@
 .theme1{
-    --main: #670606;
-    --off: #dbbc15;
-    --neutral1: grey;
+    --main: #0F3D0F;
+    --off: #ffbf7d;
+    --neutral1: white;
 }
 
 body{
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
     margin: 0;
-    background-color: var(--main);
-    color: var(--off);
-    font-size: 8vw;
+    font-family: 'Squada One', cursive;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
-#titlebar{
+#splash{
+    height: 100vh;
     width: 100vw;
-    height: 15vh;
-    font-family: 'Monoton', cursive;
     display: flex;
     align-items: center;
-    text-shadow:
-    -1px -1px 0 #000,  
-     1px -1px 0 #000,
-     -3px 3px 0 #000,
-      3px 3px 0 #000;
+    justify-content: center;
+    background-color: var(--main);
 }
 
-#name{
-    padding: 5px 30px;
-}
-
-#content{
-    font-size: 60px;
-    font-family: 'Maven Pro', sans-serif;
-    height: 85vh;
-    width: 100vw;
+#titleWrapper{
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.page{
-    position: relative;
-    display: none;
-    height: 85vh;
+#logo{
+    position: absolute;
+    right: 100%;
+    font-size: 15vh;
+}
+
+#companyName{
+    font-size: 20vmin;
+    color: var(--off);
+    font-family: 'Righteous', cursive;
+    /* -webkit-text-stroke: 2px black; */
+    /* font-weight: bold; */
+    
+}
+
+#tagline{
+    position: absolute;
+    left: 60%;
+    top: 90%;
+    color: var(--neutral1);
+    font-size: 4vh;
+    width: 30vw;
+}
+
+#whatPage{
+    height: 100vh;
     width: 100vw;
-    bottom: 0;
-    transition: bottom 2s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--off);
+    color: var(--main);
 }
 
-.page.selected{
-    display: block;
+#whatContent{
+    height: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-@media screen and (orientation:portrait){
-    #page1 > svg{
-        width: 60%;
-        left: 10%;
-        bottom: 40%;
-    }
-
-    #question1{
-        top: 20%;
-        right: 10%;
-    }
+#whatContent > svg{
+    height: 40vmin;
 }
 
-@media screen and (orientation:landscape){
-    #page1 > svg{
-        height: 100%;
-        left: 35%;
-        bottom: 10%;
-    }
-
-    #question1{
-        top: 10%;
-        right: 16%;
-    }
+#whatContent > svg > g{
+    fill: var(--main);
 }
 
-/* #page1{
-    transition: bottom 1s ease-out;
+#wpTitle{
+    margin-top: 2vmin;
+    font-size: 6vmin;
+}
+
+.water{
+    animation: dash 5s linear;
+    animation-iteration-count:infinite;
+    fill: none;
+    stroke: var(--main);
+    stroke-width: 15px;
+    stroke-dasharray: 35;
+    stroke-linecap: round;
+}
+
+/* .water:last-child{
+    stroke-dashoffset: 10;
 } */
+@keyframes dash {
+    to {
+      stroke-dashoffset: 600;
+    }
+  }
 
-#page1 > svg{
-    position: absolute;
-}
-
-#svg_hand{
-    fill: var(--off);
-    stroke: black;
-    stroke-width: 2px;
-    cursor: pointer;
-}
-
-#svg_arrows{
-    fill: rgba(33, 33, 33, 0.5);
-    stroke: rgba(255, 255, 255, 0.5);
-    display: none;
-}
-
-/* #page1:hover #svg_arrows{
-    display: block;
-} */
-
-#svg_arrows[start]{
-    display: block;
-}
-
-#svg_hand[drag=true] + #svg_arrows{
-    display: none;
-}
-
-#svg_arrows > g{
-    animation: floaty 1.2s infinite;
-}
-
-#svg_arrows > g:nth-child(1){
-    animation-delay: 300ms;
-}
-
-#svg_arrows > g:nth-child(2){
-    animation-delay: 600ms;
-}
-
-#svg_arrows > g:nth-child(3){
-    animation-delay: 900ms;
-}
-
-@keyframes floaty{
-    0%{
-        transform: translate(0, 0);
-        opacity: 0;
+@media only screen and (max-width: 1024px)  {
+    #logo{
+        bottom: 101%;
+        right: initial;
     }
 
-    50%{
-        opacity: 100%;
+    #companyName{
+        font-size: 30vmin;
     }
 
-    100%{
-        opacity: 0;
-        transform: translate(0, -60px);
+    #tagline{
+        width: 56vw;
+        left: 40%
     }
-}
-
-#question1{
-    position: absolute;
-    text-align: right;
-    text-shadow:
-    -2px -2px 0 #000,  
-     2px -2px 0 #000,
-     -2px 2px 0 #000,
-      2px 2px 0 #000;
-    user-select: none;
-}
-
-#question1 > p{
-    margin: 4px 0;
 }

@@ -142,4 +142,28 @@
         </svg>
         <canvas width="750" height="585" id="pong"></canvas>
     </div>
+    <div id="p1">
+        <svg viewbox="0 0 410 310">
+            <defs>
+                <clipPath id="theClippingPath" > 
+                    <path d="M 10 320 L 410 310 L 410 10 L 90 10z"/>
+                </clipPath> 
+            </defs>
+            <path d="M 10 320 L 90 10 L 410 10" stroke='darkgrey' stroke-width=20></path>
+            <image href="testpeople.jpg" x=10 y=10 height="300" width="400" clip-path="url(#theClippingPath)"></image>
+        </svg>
+        <div class="pcontent">
+            <div id="textWrapper">
+                <p>
+                    <span>Our <span class="uli">philosophy</span> is simple. We invest in two things, people and ideas. We believe the people we work with can take their ideas from back of the envelope concepts to raise additional 
+                    capital through the demonstration of 
+                    <span class="uli">user-centred design</span>, key <span class="uli">user acquisition</span>, and sound <span class="uli">growth strategies</span> and metrics.</span>
+                </p>
+                <p>
+                    <span>We don’t consider our investments ‘deals’, or transactions, we talk about our elbow family—A growing ecosystem of people and 
+                        <span class="uli">independent thought</span> centred around wanting to do more and never being complacent.</span>
+                </p>
+            </div>
+        </div>
+    </div>
 </body>

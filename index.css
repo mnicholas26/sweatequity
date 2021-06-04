@@ -160,3 +160,50 @@ body{
     width: 100vmin;
     margin: auto;
 }
+
+#p1{
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--off);
+    position: relative;
+    overflow: hidden;
+}
+
+#p1 > svg{
+    height: 80vmin;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.pcontent{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 10;
+}
+
+#textWrapper{
+    width: 70vw;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+#textWrapper > p{
+    font-size: 4.5vmin;
+}
+
+.pcontent p > span{
+    background-color: white;
+    line-height: 7vmin;
+}
+
+.uli{
+    text-decoration: underline;
+}
+
+.uli:hover{
+    color: white;
+    background-color: black;
+    text-decoration: none;
+}

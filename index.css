@@ -80,8 +80,8 @@ body{
 }
 
 #wpTitle{
-    margin-top: 2vmin;
-    font-size: 6vmin;
+    margin-bottom: 2vmin;
+    font-size: 3.5vmin;
 }
 
 .water{
@@ -94,12 +94,22 @@ body{
     stroke-linecap: round;
 }
 
+.wpContent{
+    font-size: 3vmin;
+    width: 100%;
+    margin: 1vmin 0;
+}
+
+.large{
+    font-size: 5vmin;
+}
+
 /* .water:last-child{
     stroke-dashoffset: 10;
 } */
 @keyframes dash {
     to {
-      stroke-dashoffset: 600;
+      stroke-dashoffset: 700;
     }
   }
 
@@ -117,4 +127,36 @@ body{
         width: 56vw;
         left: 40%
     }
+}
+
+#pongPage{
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--main);
+    position: relative;
+}
+
+#pongPage > svg{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 25vmin;
+    margin: auto;
+    fill: #0E230E;
+}
+
+#pongPage .water{
+    stroke: #0E230E;
+}
+
+#pong{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100vmin;
+    margin: auto;
 }

@@ -1,17 +1,163 @@
-.theme1{
-    --main: #0F3D0F;
-    --off: #ffbf7d;
+.light{
+    --main: #fffef7;
+    --off: black;
     --neutral1: white;
+    --alternate: #a61c00;
+    --neutral2: darkgrey
+}
+
+.dark{
+    /* --main: #11051B; */
+    --main: #1e1527;
+    --off: white;
+    /* --neutral1: #0A0310; */
+    --neutral1: #100818;
+    --alternate: #a61c00;
+    --neutral2: lightgrey;
 }
 
 body{
     margin: 0;
-    font-family: 'Squada One', cursive;
+    font-family: 'open sans', sans-serif;
     width: 100vw;
     overflow-x: hidden;
+    color: var(--off);
+}
+
+.page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #splash{
+    background-color: var(--main);
+    font-size: 5vh;
+    font-weight: bold;
+}
+
+#title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+#philosophy{
+    background-color: var(--neutral1);
+}
+
+.paragraphWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 70vw;
+    font-size: 3.5vh;
+    font-weight: 500;
+}
+
+.uli{
+    text-decoration: underline;
+}
+
+.uli:hover{
+    text-decoration-color: var(--alternate);
+    cursor: pointer;
+}
+
+#articles{
+    background-color: var(--main);
+    padding: 0 15vw;
+    align-items: baseline;
+    font-size: 3vh;
+}
+
+.infoCards{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70vw;
+    margin: 2vh 0;
+}
+
+.infoCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    width: 28vw;
+    cursor: pointer;
+}
+
+.cardPic{
+    width: 28vw;
+    height: 21vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardImgWrapper{
+    height: 100%;
+    width: 100%;
+    transition: height ease-in-out 0.15s;
+}
+
+.cardPic:hover > .cardImgWrapper{
+    height: 20vw;
+}
+
+.cardImgWrapper > img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.cardHeading{
+    font-size: 2.5vh;
+    margin: 1vh 0;
+    border-left: 2px solid var(--neutral2);
+    padding-left: 1vw;
+    transition: border ease-in-out 0.2s;
+}
+
+.cardHeading:hover{
+    border-left: 10px solid var(--alternate);
+}
+
+
+.cardSub{
+    font-size: 2vh;
+}
+
+.readmore{
+    align-self: flex-end;
+    font-size: 1.6vh;
+}
+
+#about{
+    background-color: var(--main);
+    padding: 0 15vw;
+    align-items: baseline;
+    font-size: 3vh;
+}
+
+@media only screen and (orientation: portrait){
+    .paragraphWrapper{
+        font-size: 5vw;
+    }
+
+    .paragraphWrapper > p{
+        text-align: center;
+    }
+}
+
+/* #splash{
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -38,9 +184,6 @@ body{
     font-size: 20vmin;
     color: var(--off);
     font-family: 'Righteous', cursive;
-    /* -webkit-text-stroke: 2px black; */
-    /* font-weight: bold; */
-    
 }
 
 #tagline{
@@ -104,9 +247,7 @@ body{
     font-size: 5vmin;
 }
 
-/* .water:last-child{
-    stroke-dashoffset: 10;
-} */
+
 @keyframes dash {
     to {
       stroke-dashoffset: 700;
@@ -206,4 +347,4 @@ body{
     color: white;
     background-color: black;
     text-decoration: none;
-}
+} */

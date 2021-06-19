@@ -1,9 +1,24 @@
 window.onload = () => {
+    let time = new Date().toLocaleString();
+    let timereg = /[\d]*:[\d]*:[\d]*/;
+    time = time.match(timereg);
+    console.log(time);
+    time = time[0].split(':');
+    if(time[0] >= 21 || time[0] <= 6) document.body.classList.replace('light', 'dark');
+
+    let modetoggle = document.getElementById('modeToggle');
+    modetoggle.children[1].addEventListener('click', () => {
+        modetoggle.children[1].classList.toggle('on');
+        document.body.classList.toggle('light');
+        document.body.classList.toggle('dark');
+    })
+
     setTimeout(() => {
-        let title = document.getElementById('title');
+        let title = document.getElementById('logo');
         let page = document.getElementById('splash');
         let h = page.clientHeight, w = page.clientWidth;
         title.bbox = title.getBoundingClientRect();
+        title.style.textShadow = '#1e1527 20px 20px 10px';
         title.centre = {
             x: title.bbox.x + (title.bbox.width/2),
             y: title.bbox.y + (title.bbox.height/2)
@@ -28,8 +43,10 @@ window.onload = () => {
             //     title.style.transform = '';
             // }
             if(window.scrollY < h){
-                let projection = project(pos, title.centre, 0.09);
+                let projection = project(pos, title.centre, 0.03);
                 title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
+                let umbra = Math.max(6, .7*Math.sqrt(Math.pow(projection.x, 2) + Math.pow(projection.y, 2)));
+                title.style.textShadow = `#1e1527 ${1.5*projection.x.toFixed(1)}px ${1.5*projection.y.toFixed(1)}px ${umbra}px`;
             }
         });
     }, 250);

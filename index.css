@@ -1,17 +1,17 @@
 .light{
-    --main: #fffef7;
+    --main: #fbf8f2;
     --off: black;
     --neutral1: white;
     --alternate: #a61c00;
-    --neutral2: darkgrey
+    --neutral2: darkgrey;
 }
 
 .dark{
     /* --main: #11051B; */
-    --main: #1e1527;
+    --main: #100818;
     --off: white;
     /* --neutral1: #0A0310; */
-    --neutral1: #100818;
+    --neutral1: #1e1527;
     --alternate: #a61c00;
     --neutral2: lightgrey;
 }
@@ -30,11 +30,12 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: var(--neutral1);
 }
 
 #splash{
     background-color: var(--main);
-    font-size: 5vh;
+    font-size: 4vh;
     font-weight: bold;
 }
 
@@ -44,6 +45,10 @@ body{
     justify-content: center;
     align-items: center;
     user-select: none;
+}
+
+#logo{
+    font-size: 8vh;
 }
 
 #philosophy{
@@ -68,13 +73,6 @@ body{
 .uli:hover{
     text-decoration-color: var(--alternate);
     cursor: pointer;
-}
-
-#articles{
-    background-color: var(--main);
-    padding: 0 15vw;
-    align-items: baseline;
-    font-size: 3vh;
 }
 
 .infoCards{
@@ -103,19 +101,25 @@ body{
 }
 
 .cardImgWrapper{
-    height: 100%;
-    width: 100%;
-    transition: height ease-in-out 0.15s;
-}
-
-.cardPic:hover > .cardImgWrapper{
-    height: 20vw;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cardImgWrapper > img{
+    height: 120%;
+    width: 120%;
+    transition: height ease-in-out 0.3s;
+    /* object-fit: contain; */
+}
+
+.cardPic:hover img{
     height: 100%;
     width: 100%;
-    object-fit: contain;
+    /* object-fit: contain; */
 }
 
 .cardHeading{
@@ -135,16 +139,109 @@ body{
     font-size: 2vh;
 }
 
+.cardSocials{
+    margin: 1vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.social > img{
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+.social{
+    margin: 0px 5px;
+    max-height: 32px;
+}
+
 .readmore{
     align-self: flex-end;
     font-size: 1.6vh;
 }
 
-#about{
+.altpage{
+    padding: 5vw 15vw;
+    background-color: var(--main);
+    font-size: 3vh;
+    align-items: baseline;
+}
+
+.altpage > div{
+    margin: 5vw 0;
+}
+
+/* #about{
     background-color: var(--main);
     padding: 0 15vw;
     align-items: baseline;
     font-size: 3vh;
+}
+
+#resources{
+    background-color: var(--main);
+    padding: 0 15vw;
+    align-items: baseline;
+    font-size: 3vh;
+} */
+
+#resources .infoCard{
+    width: 20vw;
+}
+
+#resources .cardPic{
+    width: 20vw;
+    height: 15vw;
+}
+
+#resources .readmore{
+    float: right;
+}
+
+#resources .cardHeading{
+    white-space: nowrap;
+}
+
+#footer > div{
+    margin: 2vh;
+    max-width: 40%;
+}
+
+#modeToggle{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    user-select: none;
+}
+
+#modeToggle > div{
+    margin: 0 0.5vh;
+    font-size: 2.5vh;
+}
+
+.toggleTrolley{
+    width: 8vh;
+    height: 4vh;
+    border-radius: 22%/50%;
+    background: linear-gradient(180deg, rgba(166,28,0,1) 0%, rgba(224,102,102,1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.toggleTrolley.on{
+    justify-content: flex-end;
+}
+
+.toggleNodule{
+    height: 2.8vh;
+    width: 2.8vh;
+    border-radius: 50%;
+    background-color: white;
+    margin: .8vh;
 }
 
 @media only screen and (orientation: portrait){

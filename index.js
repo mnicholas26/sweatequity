@@ -43,9 +43,9 @@ window.onload = () => {
             //     title.style.transform = '';
             // }
             if(window.scrollY < h){
-                let projection = project(pos, title.centre, 0.03);
+                let projection = project(pos, title.centre, 0.01);
                 title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
-                let umbra = Math.max(6, .7*Math.sqrt(Math.pow(projection.x, 2) + Math.pow(projection.y, 2)));
+                let umbra = 1.5 * Math.max(6, .7*Math.sqrt(Math.pow(projection.x, 2) + Math.pow(projection.y, 2)));
                 title.style.textShadow = `#1e1527 ${1.5*projection.x.toFixed(1)}px ${1.5*projection.y.toFixed(1)}px ${umbra}px`;
             }
         });

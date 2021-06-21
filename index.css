@@ -4,6 +4,7 @@
     --neutral1: white;
     --alternate: #a61c00;
     --neutral2: darkgrey;
+    --shadow: #1e1527;
 }
 
 .dark{
@@ -14,6 +15,7 @@
     --neutral1: #1e1527;
     --alternate: #a61c00;
     --neutral2: lightgrey;
+    --shadow: #decbf1;
 }
 
 body{
@@ -45,6 +47,41 @@ body{
     justify-content: center;
     align-items: center;
     user-select: none;
+}
+
+#title .termtext, #title .termover{
+    max-width: 12vw;
+    text-align: center;
+}
+
+.termtext > span::after{
+    content: "_";
+    animation: flash 0.8s linear;
+    animation-iteration-count: infinite;
+    margin-left: 1vh;
+    position: absolute;
+}
+
+.termover > span{
+    position: relative;
+}
+
+.termover > span::after{
+    content: "▶";
+    margin-left: 1vh;
+    position: absolute;
+    font-size: 2.5vh;
+    top: 62%;
+    cursor: pointer;
+    user-select: none;
+    color: var(--alternate);
+}
+
+@keyframes flash{
+    0%{opacity: 1;}
+    49.9%{opacity: 1;}
+    50%{opacity: 0;}
+    99.9%{opacity: 0;}
 }
 
 #logo{
@@ -105,7 +142,7 @@ body{
     height: 100%;
     width: 100%;
     transition: transform 0.2s ease;
-    transform: scale(1.1);
+    transform: scale(1.05);
     display: flex;
     justify-content: center;
     align-self: center;
@@ -162,14 +199,18 @@ body{
 }
 
 .altpage{
-    padding: 5vw 15vw;
+    padding: 0.1vw 15vw;
     background-color: var(--main);
     font-size: 3vh;
     align-items: baseline;
 }
 
 .altpage > div{
-    margin: 5vw 0;
+    margin: 10vw 0;
+}
+
+.altpage > div > div:first-child{
+    font-size: 3.5vh;
 }
 
 /* #about{
@@ -215,9 +256,22 @@ body{
     white-space: nowrap;
 }
 
+#footer{
+    border-top: 2px double var(--neutral2);
+    margin-bottom: 2vh;
+    padding-top: 5vw;
+}
+
 #footer > div{
     margin: 2vh;
     max-width: 40%;
+}
+
+#fsmall{
+    font-size: 1.5vh;
+    align-self: center;
+    max-width: 100% !important;
+    text-align: center;
 }
 
 #modeToggle{
@@ -253,6 +307,10 @@ body{
     border-radius: 50%;
     background-color: white;
     margin: .8vh;
+}
+
+.ftext{
+    font-size: 2.5vh;
 }
 
 @media only screen and (orientation: portrait){

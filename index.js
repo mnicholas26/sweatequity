@@ -4,7 +4,10 @@ window.onload = () => {
     time = time.match(timereg);
     console.log(time);
     time = time[0].split(':');
-    if(time[0] >= 21 || time[0] <= 6) document.body.classList.replace('light', 'dark');
+    if(time[0] >= 21 || time[0] <= 6) {
+        document.body.classList.replace('light', 'dark');
+        document.getElementById('modeToggle').children[1].classList.toggle('on');
+    }
 
     let modetoggle = document.getElementById('modeToggle');
     modetoggle.children[1].addEventListener('click', () => {
@@ -13,43 +16,60 @@ window.onload = () => {
         document.body.classList.toggle('dark');
     })
 
-    setTimeout(() => {
-        let title = document.getElementById('logo');
-        let page = document.getElementById('splash');
-        let h = page.clientHeight, w = page.clientWidth;
-        title.bbox = title.getBoundingClientRect();
-        title.style.textShadow = '#1e1527 20px 20px 10px';
-        title.centre = {
-            x: title.bbox.x + (title.bbox.width/2),
-            y: title.bbox.y + (title.bbox.height/2)
-        }
+    let title = document.getElementById('logo');
+    let page = document.getElementById('splash');
+    let h = page.clientHeight, w = page.clientWidth;
+    title.bbox = title.getBoundingClientRect();
+    title.style.textShadow = '#1e1527 20px 20px 10px';
+    title.centre = {
+        x: title.bbox.x + (title.bbox.width/2),
+        y: title.bbox.y + (title.bbox.height/2)
+    }
 
-        function project(p, c, scale){
-            return {
-                x: (p.x - c.x) * -scale,
-                y: (p.y - c.y) * -scale
-            }
+    function project(p, c, scale){
+        return {
+            x: (p.x - c.x) * -scale,
+            y: (p.y - c.y) * -scale
         }
-        document.addEventListener('mousemove', (e) => {
-            //check if on screen
-            let pos = {x: e.pageX, y: e.pageY};
-            // if(pos.x > (title.centre.x - (0.4*w)) && 
-            //     pos.x < (title.centre.x + (0.4*w)) &&
-            //     pos.y < (title.centre.y + (0.4*h)) &&
-            //     pos.y > (title.centre.y - (0.4*h))){
-            //         let projection = project(pos, title.centre, 0.09);
-            //         title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
-            // } else {
-            //     title.style.transform = '';
-            // }
-            if(window.scrollY < h){
-                let projection = project(pos, title.centre, 0.01);
-                title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
-                let umbra = 1.5 * Math.max(6, .7*Math.sqrt(Math.pow(projection.x, 2) + Math.pow(projection.y, 2)));
-                title.style.textShadow = `#1e1527 ${1.5*projection.x.toFixed(1)}px ${1.5*projection.y.toFixed(1)}px ${umbra}px`;
+    }
+    document.addEventListener('mousemove', (e) => {
+        //check if on screen
+        let pos = {x: e.pageX, y: e.pageY};
+        // if(pos.x > (title.centre.x - (0.4*w)) && 
+        //     pos.x < (title.centre.x + (0.4*w)) &&
+        //     pos.y < (title.centre.y + (0.4*h)) &&
+        //     pos.y > (title.centre.y - (0.4*h))){
+        //         let projection = project(pos, title.centre, 0.09);
+        //         title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
+        // } else {
+        //     title.style.transform = '';
+        // }
+        let colour = getComputedStyle(document.body).getPropertyValue('--shadow');
+        if(window.scrollY < h){
+            let projection = project(pos, title.centre, 0.007);
+            title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
+            let umbra = 1.5 * Math.max(6, .7*Math.sqrt(Math.pow(projection.x, 2) + Math.pow(projection.y, 2)));
+            title.style.textShadow = `${colour} ${1.5*projection.x.toFixed(1)}px ${1.5*projection.y.toFixed(1)}px ${umbra}px`;
+        }
+    });
+
+    setTimeout(() => {
+        let termtitle = document.querySelector('#title .termtext > span');
+        termtitle.textContent = "";
+        let text = "elbow ventures";
+        let counter = 0;
+        let timer = setInterval(() => {
+            if(counter == text.length) {
+                clearInterval(timer);
+                setTimeout(() => {
+                    termtitle.parentElement.classList.replace("termtext", "termover");
+                }, 4000);
+            } else {
+                termtitle.textContent += text.charAt(counter);
+                counter++;
             }
-        });
-    }, 250);
+        }, 250);
+    }, 1000);
     // const canvas = document.getElementById('pong');
     // const context = canvas.getContext('2d');
     // const grid = 15;

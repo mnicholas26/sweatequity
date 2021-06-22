@@ -46,10 +46,10 @@ window.onload = () => {
         // }
         let colour = getComputedStyle(document.body).getPropertyValue('--shadow');
         if(window.scrollY < h){
-            let projection = project(pos, title.centre, 0.007);
+            let projection = project(pos, title.centre, 0.005);
             title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
             let umbra = 1.5 * Math.max(6, .7*Math.sqrt(Math.pow(projection.x, 2) + Math.pow(projection.y, 2)));
-            title.style.textShadow = `${colour} ${1.5*projection.x.toFixed(1)}px ${1.5*projection.y.toFixed(1)}px ${umbra}px`;
+            title.style.textShadow = `${colour} ${.7*projection.x.toFixed(1)}px ${.7*projection.y.toFixed(1)}px ${umbra}px`;
         }
     });
 
@@ -61,14 +61,14 @@ window.onload = () => {
         let timer = setInterval(() => {
             if(counter == text.length) {
                 clearInterval(timer);
-                setTimeout(() => {
-                    termtitle.parentElement.classList.replace("termtext", "termover");
-                }, 4000);
+                // setTimeout(() => {
+                //     termtitle.parentElement.classList.replace("termtext", "termover");
+                // }, 4000);
             } else {
                 termtitle.textContent += text.charAt(counter);
                 counter++;
             }
-        }, 250);
+        }, 150);
     }, 1000);
     // const canvas = document.getElementById('pong');
     // const context = canvas.getContext('2d');

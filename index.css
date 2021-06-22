@@ -15,7 +15,8 @@
     --neutral1: #1e1527;
     --alternate: #a61c00;
     --neutral2: lightgrey;
-    --shadow: #decbf1;
+    /* --shadow: #decbf1; */
+    --shadow: #1e1527;
 }
 
 body{
@@ -257,7 +258,7 @@ body{
 }
 
 #footer{
-    border-top: 2px double var(--neutral2);
+    border-top: 1px solid var(--alternate);
     margin-bottom: 2vh;
     padding-top: 5vw;
 }
@@ -310,7 +311,7 @@ body{
 }
 
 .ftext{
-    font-size: 2.5vh;
+    font-size: 2vh;
 }
 
 @media only screen and (orientation: portrait){

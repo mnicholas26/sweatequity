@@ -14,13 +14,12 @@ window.onload = () => {
         modetoggle.children[1].classList.toggle('on');
         document.body.classList.toggle('light');
         document.body.classList.toggle('dark');
-    })
+    });
 
     let title = document.getElementById('logo');
-    let page = document.getElementById('splash');
-    let h = page.clientHeight, w = page.clientWidth;
     title.bbox = title.getBoundingClientRect();
-    title.style.textShadow = '#1e1527 20px 20px 10px';
+    title.colour = getComputedStyle(document.body).getPropertyValue('--shadow');
+    title.style.textShadow = `${title.colour} 2px 2px 10px`;
     title.centre = {
         x: title.bbox.x + (title.bbox.width/2),
         y: title.bbox.y + (title.bbox.height/2)
@@ -32,26 +31,35 @@ window.onload = () => {
             y: (p.y - c.y) * -scale
         }
     }
-    document.addEventListener('mousemove', (e) => {
-        //check if on screen
+
+    function logoprojection(e){
         let pos = {x: e.pageX, y: e.pageY};
-        // if(pos.x > (title.centre.x - (0.4*w)) && 
-        //     pos.x < (title.centre.x + (0.4*w)) &&
-        //     pos.y < (title.centre.y + (0.4*h)) &&
-        //     pos.y > (title.centre.y - (0.4*h))){
-        //         let projection = project(pos, title.centre, 0.09);
-        //         title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
-        // } else {
-        //     title.style.transform = '';
-        // }
-        let colour = getComputedStyle(document.body).getPropertyValue('--shadow');
-        if(window.scrollY < h){
-            let projection = project(pos, title.centre, 0.005);
-            title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
-            let umbra = 1.5 * Math.max(6, .7*Math.sqrt(Math.pow(projection.x, 2) + Math.pow(projection.y, 2)));
-            title.style.textShadow = `${colour} ${.7*projection.x.toFixed(1)}px ${.7*projection.y.toFixed(1)}px ${umbra}px`;
-        }
-    });
+        let projection = project(pos, title.centre, 0.005);
+        title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
+        let umbra = 1.5 * Math.max(6, .7*Math.sqrt(Math.pow(projection.x, 2) + Math.pow(projection.y, 2)));
+        title.style.textShadow = `${title.colour} ${.7*projection.x.toFixed(1)}px ${.7*projection.y.toFixed(1)}px ${umbra}px`;
+    }
+
+    // document.addEventListener('mousemove', (e) => {
+    //     //check if on screen
+    //     let pos = {x: e.pageX, y: e.pageY};
+    //     // if(pos.x > (title.centre.x - (0.4*w)) && 
+    //     //     pos.x < (title.centre.x + (0.4*w)) &&
+    //     //     pos.y < (title.centre.y + (0.4*h)) &&
+    //     //     pos.y > (title.centre.y - (0.4*h))){
+    //     //         let projection = project(pos, title.centre, 0.09);
+    //     //         title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
+    //     // } else {
+    //     //     title.style.transform = '';
+    //     // }
+    //     let colour = getComputedStyle(document.body).getPropertyValue('--shadow');
+    //     if(window.scrollY < h){
+    //         let projection = project(pos, title.centre, 0.005);
+    //         title.style.transform = `translate(${projection.x.toFixed(1)}px, ${projection.y.toFixed(1)}px)`;
+    //         let umbra = 1.5 * Math.max(6, .7*Math.sqrt(Math.pow(projection.x, 2) + Math.pow(projection.y, 2)));
+    //         title.style.textShadow = `${colour} ${.7*projection.x.toFixed(1)}px ${.7*projection.y.toFixed(1)}px ${umbra}px`;
+    //     }
+    // });
 
     setTimeout(() => {
         let termtitle = document.querySelector('#title .termtext > span');
@@ -70,6 +78,44 @@ window.onload = () => {
             }
         }, 150);
     }, 1000);
+
+    let pobserver = new IntersectionObserver((entries) => {
+        for(const entry of entries){
+            if(entry.isIntersecting){
+                entry.target.classList.remove('moveup', 'movedown');
+                entry.target.classList.add('fadein');
+            } else {
+                entry.target.classList.remove('fadein');
+                if(entry.boundingClientRect.y < window.innerHeight / 2) entry.target.classList.add('moveup');
+                else entry.target.classList.add('movedown');
+            }
+        }
+    }, {threshold: 0.11});
+
+    let pgraphs = document.querySelectorAll('.paragraphWrapper > p');
+    for(const pgraph of pgraphs){
+        pobserver.observe(pgraph);
+    }
+
+    let logoobserver = new IntersectionObserver((entries) => {
+        let logo = entries[0];
+        if(logo.isIntersecting) {
+            title.bbox = title.getBoundingClientRect();
+            title.centre = {
+                x: title.bbox.x + (title.bbox.width/2),
+                y: title.bbox.y + (title.bbox.height/2)
+            }
+            title.colour = getComputedStyle(document.body).getPropertyValue('--shadow');
+            document.addEventListener('mousemove', logoprojection);
+        } else {
+            document.removeEventListener('mousemove', logoprojection);
+            title.style.transform = `translate(0px, 0px)`;
+            title.style.textShadow = `${title.colour} 2px 2px 10px`;
+
+        }
+    });
+
+    logoobserver.observe(title);
     // const canvas = document.getElementById('pong');
     // const context = canvas.getContext('2d');
     // const grid = 15;

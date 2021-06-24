@@ -104,6 +104,24 @@ body{
     font-weight: 500;
 }
 
+.paragraphWrapper > p{
+    transition: transform 1.2s ease-in, opacity 1.2s ease-in;
+    opacity: 0;
+}
+
+.paragraphWrapper > p.moveup{
+    transform: translateY(-150px);
+}
+
+.paragraphWrapper > p.movedown{
+    transform: translateY(150px);
+}
+
+.paragraphWrapper > p.fadein{
+    transform: translateY(0px);
+    opacity: 1;
+}
+
 .uli{
     text-decoration: underline;
 }
@@ -143,14 +161,14 @@ body{
     height: 100%;
     width: 100%;
     transition: transform 0.2s ease;
-    transform: scale(1.05);
+    transform: scale(1.35);
     display: flex;
     justify-content: center;
     align-self: center;
 }
 
 .cardPic:hover .cardImgWrapper{
-    transform: scale(1);
+    transform: scale(1.3);
 }
 
 .cardImgWrapper > img{
@@ -197,6 +215,7 @@ body{
 .readmore{
     align-self: flex-end;
     font-size: 1.6vh;
+    float: right;
 }
 
 .altpage{
@@ -240,6 +259,10 @@ body{
     cursor: pointer;
 }
 
+body.dark .social.git > img{
+    content:url(imgs/GitHub\ Social\ Dark.png)
+}
+
 #resources .infoCard{
     width: 20vw;
 }
@@ -247,10 +270,6 @@ body{
 #resources .cardPic{
     width: 20vw;
     height: 15vw;
-}
-
-#resources .readmore{
-    float: right;
 }
 
 #resources .cardHeading{

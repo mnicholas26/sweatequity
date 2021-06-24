@@ -85,8 +85,23 @@ body{
     99.9%{opacity: 0;}
 }
 
-#logo{
-    font-size: 8vh;
+#logo > img{
+    height: 160px;
+    width: 160px;
+    object-fit: contain;
+    display: none;
+}
+
+#logo[frame = "0"] > #frame0{
+    display: block;
+}
+
+#logo[frame = "1"] > #frame1{
+    display: block;
+}
+
+#logo[frame = "2"] > #frame2{
+    display: block;
 }
 
 #philosophy{
@@ -105,16 +120,16 @@ body{
 }
 
 .paragraphWrapper > p{
-    transition: transform 1.2s ease-in, opacity 1.2s ease-in;
+    transition: transform 0.5s ease-in, opacity 0.5s ease-in;
     opacity: 0;
 }
 
 .paragraphWrapper > p.moveup{
-    transform: translateY(-150px);
+    transform: translateY(-50px);
 }
 
 .paragraphWrapper > p.movedown{
-    transform: translateY(150px);
+    transform: translateY(50px);
 }
 
 .paragraphWrapper > p.fadein{

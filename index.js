@@ -69,6 +69,7 @@ window.onload = () => {
         let timer = setInterval(() => {
             if(counter == text.length) {
                 clearInterval(timer);
+                logoPlay();
                 // setTimeout(() => {
                 //     termtitle.parentElement.classList.replace("termtext", "termover");
                 // }, 4000);
@@ -116,6 +117,22 @@ window.onload = () => {
     });
 
     logoobserver.observe(title);
+
+    function logoPlay(time = 90, order = [0,1,1,2,2,2,2,1,1,0]){
+        let counter = 0;
+        let timer = setInterval(() => {
+            if(counter >= order.length) {
+                clearInterval(timer);
+                return;
+            } else {
+                title.setAttribute('frame', order[counter]);
+                counter++;
+            }
+        }, time);
+
+    }
+
+    title.addEventListener('click', () => {logoPlay()});
     // const canvas = document.getElementById('pong');
     // const context = canvas.getContext('2d');
     // const grid = 15;

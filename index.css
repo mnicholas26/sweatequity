@@ -5,6 +5,8 @@
     --alternate: #a61c00;
     --neutral2: darkgrey;
     --shadow: #1e1527;
+    --compl: #0DA898;
+    --comp2: white;
 }
 
 .dark{
@@ -17,6 +19,8 @@
     --neutral2: lightgrey;
     /* --shadow: #decbf1; */
     --shadow: #1e1527;
+    --compl: #008AA6;
+    --comp2: white;
 }
 
 body{
@@ -86,8 +90,8 @@ body{
 }
 
 #logo > img{
-    height: 160px;
-    width: 160px;
+    height: 10vh;
+    width: 10vh;
     object-fit: contain;
     display: none;
 }
@@ -117,24 +121,26 @@ body{
     width: 70vw;
     font-size: 3.5vh;
     font-weight: 500;
-}
-
-.paragraphWrapper > p{
     transition: transform 0.5s ease-in, opacity 0.5s ease-in;
     opacity: 0;
 }
 
-.paragraphWrapper > p.moveup{
+.paragraphWrapper.moveup{
     transform: translateY(-50px);
 }
 
-.paragraphWrapper > p.movedown{
+.paragraphWrapper.movedown{
     transform: translateY(50px);
 }
 
-.paragraphWrapper > p.fadein{
+.paragraphWrapper.fadein{
     transform: translateY(0px);
     opacity: 1;
+}
+
+.paragraphWrapper span::selection{
+    background-color: var(--compl);
+    color: var(--comp2);
 }
 
 .uli{

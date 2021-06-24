@@ -93,7 +93,7 @@ window.onload = () => {
         }
     }, {threshold: 0.11});
 
-    let pgraphs = document.querySelectorAll('.paragraphWrapper > p');
+    let pgraphs = document.querySelectorAll('.paragraphWrapper');
     for(const pgraph of pgraphs){
         pobserver.observe(pgraph);
     }
@@ -118,7 +118,7 @@ window.onload = () => {
 
     logoobserver.observe(title);
 
-    function logoPlay(time = 90, order = [0,1,1,2,2,2,2,1,1,0]){
+    function logoPlay(time = 40, order = [0,1,1,2,2,2,2,2,2,1,1,0]){
         let counter = 0;
         let timer = setInterval(() => {
             if(counter >= order.length) {

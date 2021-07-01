@@ -221,7 +221,7 @@ body{
 
 .cardSocials{
     margin: 1vh 0;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-evenly;
 }
@@ -288,6 +288,10 @@ body.dark .social.git > img{
     content:url(imgs/GitHub\ Social\ Dark.png)
 }
 
+#resources{
+    display: none;
+}
+
 #resources .infoCard{
     width: 20vw;
 }
@@ -350,8 +354,8 @@ body.light .moon{
     cursor: pointer;
 }
 
-.toggleTrolley.on{
-    justify-content: flex-end;
+.toggleTrolley.on .toggleNodule{
+    transform: translateX(3.8vh);
 }
 
 .toggleNodule{
@@ -360,6 +364,8 @@ body.light .moon{
     border-radius: 50%;
     background-color: white;
     margin: .8vh;
+    box-shadow: -3px 3px 8px rgb(0 0 0 / 40%);
+    transition: transform 0.2s;
 }
 
 .ftext{
@@ -383,6 +389,7 @@ body.light .moon{
 
 a{
     color: var(--off);
+    text-decoration: none;
 }
 
 @media only screen and (orientation: portrait){

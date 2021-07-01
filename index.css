@@ -89,22 +89,23 @@ body{
     99.9%{opacity: 0;}
 }
 
-#logo > img{
+.logo > img{
     height: 10vh;
     width: 10vh;
     object-fit: contain;
     display: none;
+    cursor: pointer;
 }
 
-#logo[frame = "0"] > #frame0{
+.logo[frame = "0"] > .frame0{
     display: block;
 }
 
-#logo[frame = "1"] > #frame1{
+.logo[frame = "1"] > .frame1{
     display: block;
 }
 
-#logo[frame = "2"] > #frame2{
+.logo[frame = "2"] > .frame2{
     display: block;
 }
 
@@ -166,7 +167,10 @@ body{
     justify-content: center;
     align-items: baseline;
     width: 28vw;
-    cursor: pointer;
+}
+
+.infoCard a{
+    text-decoration: none;
 }
 
 .cardPic{
@@ -327,6 +331,14 @@ body.dark .social.git > img{
     font-size: 2.5vh;
 }
 
+body.dark .sun{
+    color: darkslategrey !important;
+}
+
+body.light .moon{
+    color: lightgrey !important;
+}
+
 .toggleTrolley{
     width: 8vh;
     height: 4vh;
@@ -352,6 +364,25 @@ body.dark .social.git > img{
 
 .ftext{
     font-size: 2vh;
+}
+
+#ftitle{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#flogo{
+    margin-right: 1vh;
+}
+
+#flogo > img{
+    height: 3.5vh;
+    width: 3.5vh;
+}
+
+a{
+    color: var(--off);
 }
 
 @media only screen and (orientation: portrait){

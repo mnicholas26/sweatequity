@@ -16,7 +16,7 @@ window.onload = () => {
         document.body.classList.toggle('dark');
     });
 
-    let title = document.getElementById('logo');
+    let title = document.getElementById('mlogo');
     title.bbox = title.getBoundingClientRect();
     title.colour = getComputedStyle(document.body).getPropertyValue('--shadow');
     title.style.textShadow = `${title.colour} 2px 2px 10px`;
@@ -118,14 +118,14 @@ window.onload = () => {
 
     logoobserver.observe(title);
 
-    function logoPlay(time = 40, order = [0,1,1,2,2,2,2,2,2,1,1,0]){
+    function logoPlay(element = title, time = 40, order = [0,1,1,2,2,2,2,2,2,1,1,0]){
         let counter = 0;
         let timer = setInterval(() => {
             if(counter >= order.length) {
                 clearInterval(timer);
                 return;
             } else {
-                title.setAttribute('frame', order[counter]);
+                element.setAttribute('frame', order[counter]);
                 counter++;
             }
         }, time);
@@ -133,6 +133,8 @@ window.onload = () => {
     }
 
     title.addEventListener('click', () => {logoPlay()});
+    let flogo = document.getElementById('flogo')
+    flogo.addEventListener('click', () => {logoPlay(flogo)});
     // const canvas = document.getElementById('pong');
     // const context = canvas.getContext('2d');
     // const grid = 15;

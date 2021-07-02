@@ -55,15 +55,19 @@ body{
 }
 
 #title .termtext, #title .termover{
-    max-width: 12vw;
+    max-width: 20vh;
     text-align: center;
+}
+
+.termtext > span{
+    white-space: pre-wrap;
 }
 
 .termtext > span::after{
     content: "_";
     animation: flash 0.8s linear;
     animation-iteration-count: infinite;
-    margin-left: 1vh;
+    /* margin-left: 1vh; */
     position: absolute;
 }
 
@@ -393,12 +397,97 @@ a{
 }
 
 @media only screen and (orientation: portrait){
-    .paragraphWrapper{
-        font-size: 5vw;
+    #title .termtext, #title .termover {
+        max-width: initial;
+        height: 8vh;
     }
 
     .paragraphWrapper > p{
         text-align: center;
+    }
+
+    .altpage > div{
+        margin: 10vh 0;
+    }
+
+    .altpage > div > div:first-child{
+        text-align: center;
+    }
+
+    .infoCards{
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .infoCard{
+        width: 64vw;
+        margin: 4vh 0;
+    }
+    
+    .cardPic{
+        width: 64vw;
+        height: 48vw;
+    }
+
+    #fsmall{
+        margin: 5vh 0 !important;
+    }
+}
+
+@media only screen and (orientation: portrait) and (max-device-width: 1024px){
+    #title .termtext, #title .termover {
+        width: 25vw;
+    }
+
+    .paragraphWrapper{
+        font-size: 4vw;
+    }
+
+    .altpage > div > div:first-child{
+        font-size: 4vh;
+    }
+
+    #footer > div{
+        max-width: 80%;
+    }
+
+    #fsmall{
+        font-size: 1.25vh;
+    }
+}
+
+@media only screen and (orientation: portrait) and (max-device-width: 480px){
+    #title .termtext, #title .termover {
+        width: 50vw;
+    }
+
+    .paragraphWrapper{
+        font-size: 5vw;
+    }
+
+    .altpage > div > div:first-child{
+        font-size: 3vh;
+    }
+
+    .cardHeading{
+        font-size: 2vh;
+        padding-left: 2vw;
+    }
+
+    .cardSub{
+        font-size: 1.75vh;
+    }
+
+    #footer > div{
+        max-width: 100%;
+    }
+
+    .ftext{
+        font-size: 0.75vh;
+    }
+
+    #fsmall{
+        font-size: 0.5vh;
     }
 }
 

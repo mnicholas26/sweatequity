@@ -1,0 +1,58 @@
+.light{
+    --main: #fbf8f2;
+    --off: black;
+    --alternate: #a61c00;
+}
+
+.dark{
+    --main: #100818;
+    --off: white;
+    --alternate: #a61c00;
+}
+
+body{
+    margin: 0;
+    font-family: 'open sans', sans-serif;
+    width: 100vw;
+    overflow-x: hidden;
+    color: var(--off);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main);
+    font-size: 2vh;
+}
+
+.logo{
+    margin: 5vh;
+}
+
+.logo > img{
+    height: 10vh;
+    width: 10vh;
+    object-fit: contain;
+    display: block;
+    cursor: pointer;
+}
+
+#privacy{
+    width: 80%;
+}
+
+#fsmall{
+    font-size: 1.5vh;
+    align-self: center;
+    max-width: 100% !important;
+    text-align: center;
+    margin: 2vh;
+}
+
+.uli{
+    text-decoration: underline;
+    color: var(--off);
+}
+
+.uli:hover{
+    text-decoration-color: var(--alternate);
+    cursor: pointer;
+}

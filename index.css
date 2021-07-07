@@ -260,8 +260,12 @@ body{
     font-size: 1.8vh;
 }
 
+#about img{
+    transform: translateY(10%);
+}
+
 #michaelpic{
-    transform: translateY(-9%) scale(.95);
+    transform: translateY(0%) scale(.95) !important;
 }
 
 .readmore{
@@ -338,7 +342,7 @@ body.dark .social.git > img{
 
 .compPic{
     margin: 1.2vw;
-    height: 8vw;
+    height: 4vw;
     display: flex;
     align-items: center;
     justify-content: center;

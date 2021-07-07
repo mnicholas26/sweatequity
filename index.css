@@ -241,6 +241,29 @@ body{
     max-height: 32px;
 }
 
+#about .infoCards{
+    justify-content: space-evenly;
+}
+
+#about .infoCard{
+    width: 21vw;
+    margin: 0 10vw;
+    cursor: default;
+}
+
+#about .cardPic{
+    width: 21vw;
+    height: 25vw;
+}
+
+#about .cardSub{
+    font-size: 1.8vh;
+}
+
+#michaelpic{
+    transform: translateY(-9%) scale(.95);
+}
+
 .readmore{
     align-self: flex-end;
     font-size: 1.6vh;
@@ -276,10 +299,6 @@ body{
     font-size: 3vh;
 } */
 
-#about .infoCard{
-    cursor: default;
-}
-
 #about .cardHeading:hover{
     border-left: 2px solid var(--neutral2);
 }
@@ -309,9 +328,34 @@ body.dark .social.git > img{
     white-space: nowrap;
 }
 
+#companies{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 5vw;
+    user-select: none;
+}
+
+.compPic{
+    margin: 1.2vw;
+    height: 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.compPic > img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
 #footer{
     border-top: 1px solid var(--alternate);
     margin-bottom: 2vh;
+    margin-top: 5vw;
     padding-top: 5vw;
 }
 
@@ -423,10 +467,20 @@ a{
         width: 64vw;
         margin: 4vh 0;
     }
+
+    #about .infoCard{
+        width: 63vw;
+        margin: 4vh 0;
+    }
     
     .cardPic{
         width: 64vw;
         height: 48vw;
+    }
+
+    #about .cardPic{
+        width: 63vw;
+        height: 75vw;
     }
 
     #fsmall{
